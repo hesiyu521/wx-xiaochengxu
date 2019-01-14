@@ -1,0 +1,7 @@
+@import "./../../tmplate/producList.wxss";
+.xiaoer{
+  margin: 45% auto;
+  font-size: 38rpx;
+  color: #636363;
+  text-align: center
+}

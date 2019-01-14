@@ -1,0 +1,132 @@
+swiper{
+  width: 750rpx
+}
+.banner{
+  width: 100%;
+  margin: 13rpx auto;
+  height: 750rpx;
+
+}
+.slide-image{
+  height: 100%;
+  width: 100%;
+}
+.box{
+  width: 750rpx;
+  height: 104rpx;
+  position:fixed;
+  bottom: 0rpx;
+  display: flex;
+  border-top: 4rpx #f0f0f0 solid;
+  text-align: center;
+  background-color: #fff;
+}
+.box image{
+  width: 45rpx;
+  height: 45rpx;
+  margin: 0 auto;
+  margin-bottom:5rpx 
+}
+.box3,.box4{
+  width: 30%;
+  font-weight:600;
+  line-height: 104rpx;
+  color: #fff
+}
+
+
+.box1,.box2{
+  width: 20%;
+  font-size: 28rpx;
+  font-weight:600;
+  color: #636363;
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  border-right:  4rpx #f0f0f0 solid;
+}
+.box2{
+  position: relative
+}
+.box3{
+  background-color: #fd8755;
+}
+.box4{
+  background-color: #dc2625
+}
+.describe{
+  padding: 40rpx 38rpx 20rpx 38rpx;
+  font-size: 34rpx;
+}
+.title{
+  height: 100rpx;
+  padding-right: 43rpx;
+   position: relative;
+}
+.pice{
+  color:red;
+  font-size: 36rpx;
+}
+.number{
+  float: right;
+  color: #636353;
+  font-size: 24rpx;
+}
+.fenxiang{
+  width: 42rpx;
+  height: 42rpx;
+  position: absolute;
+  right: 0;
+  top: 0
+  
+}
+
+.shopNumber,.size,.color{
+  display: flex;
+  margin-bottom:30rpx ;
+  font-size: 26rpx;
+}
+.size view,.color view{
+  margin-right: 20rpx;
+  padding: 10rpx 15rpx 10rpx 15rpx;
+  border: 3rpx #b3b3b3 solid
+}
+.shopNumber text,.size text,  .color text{
+  line-height: 55rpx;
+  margin-right: 30rpx;
+}
+
+
+.end{
+  height:50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color:#d9d7d7;
+  background-color: #f0f0f0;
+  margin-bottom: 104rpx
+}
+
+.nums{
+  display: flex;
+}
+
+.calculate{
+  padding: 10rpx 20rpx 10rpx 20rpx;
+  background-color: #f0f0f0;
+}
+.num{
+  padding: 10rpx 25rpx 10rpx 25rpx;
+  border:1rpx #f0f0f0 solid
+}
+.carTotal{
+  background: red;
+  position: absolute;
+  color: #fff;
+  line-height: 25rpx;
+  font-size: 24rpx;
+  padding: 5rpx 12rpx 5rpx 10rpx;
+  border-radius: 17rpx;
+  top: 5rpx;
+  left: 30rpx
+}

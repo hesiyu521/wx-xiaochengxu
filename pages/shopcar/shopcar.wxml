@@ -1,0 +1,58 @@
+<!--pages/shopcar/shopcar.wxml-->
+
+<view wx:if="{{hiddens}}" >
+  <image class='bgcart' src='../../image/666.png'></image>
+</view>
+
+<view wx:if="{{!hiddens}}" class='we'>
+ 
+    <view class='commodity' wx:for="{{history}}" wx:key="">
+    <view class="group" bindtap='remover' data-index='{{index}}'>
+       <block>x</block>
+    </view>
+    <view class='ssss'>
+          <view class='item_container' bindtap='itemSelected' data-index='{{index}}'>
+            <image class='select_icon' src="{{checkeds[index]?'../../image/xuanzhong.png':'../../image/weixuanzhong.png'}}"></image>
+          </view>
+        
+    </view>
+      <view bindtap='clicks' wx:key='' data-index='{{index}}'>
+        <image src='{{rootPath}}{{item.recommend.imgPath}}'></image>
+      </view>
+      <view class='titlecart'>
+        <text class='titles'>{{item.recommend.describe}}</text>
+        <view class='sizing'>规格 : 颜色({{item.color}})/尺码({{item.size}})/ 数量({{item.number}}) sssssssssssssssssssssssssssss</view>
+        <view class='pice'>￥{{item.recommend.pice}}.00 </view>
+      </view>
+      <view class="shopNumber">
+        <view class='nums'>
+             <view class='calculate' bindtap='minus'  data-index='{{index}}'>-</view>  
+             <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                <view class="item.num picker">{{thisnum[index]}}</view>  
+             </picker>
+             <view class='calculate'bindtap='add' data-index='{{index}}'>+</view>   
+         </view>
+    </view>
+    </view>
+    
+</view> 
+
+
+
+
+
+
+<view class='foot'>
+  <view style='display:flex'>
+           <view> 
+              <radio-group class="radio-group" bindchange="radioChange"  bindtap="clickCheckall">
+                  <label class="radio">
+                    <radio value="{{item}}" checked="{{checked}}" />
+              </label>
+              </radio-group>
+          </view>
+          <view class='allcheeck'>全选</view>
+          <view class='money'>￥{{allmoney}}.00</view>
+    </view>
+    <view class='close'>立即结算</view>
+</view>

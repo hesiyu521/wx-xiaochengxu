@@ -1,0 +1,22 @@
+<view style='height:100vh'>
+<view class='left'>
+    <view wx:for='{{theme}}' wx:key='{{index}}' 
+    data-index='{{index}}'
+     style="{{index == chickid?'background:#fff' :'background:#f3f3f3'}}"
+     bindtap='tabClick'
+     >
+     {{item.title}}</view>
+</view>
+<view class='right'>
+      <view 
+      bindtap='clicks'
+       wx:for='{{theme[chickid].product}}'
+       wx:key='{{index}}' 
+        data-check='{{theme[chickid].product}}'
+        data-index='{{index}}'
+        class='item'>
+      <image src='{{rootPath}}{{item.imgPath}}'></image>
+      <view class='title'>{{item.describe}}</view>
+      </view> 
+</view>
+</view>

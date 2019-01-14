@@ -1,0 +1,75 @@
+<!--pages/producList/produce.wxml-->
+
+<view class='shangpin'>
+  <swiper
+    indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}"
+    interval="{{interval}}"
+    duration="{{duration}}"
+    circular="true"
+    class='banner'
+  >
+    <block wx:for="{{recommend.particulars.banner}}" wx:key="{{index}}">
+      <swiper-item>
+        <image src="{{rootPath}}{{item}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='describe'>
+      <view class='title'>{{recommend.describe}}
+         <image class='fenxiang' src='./../../image/fenxiang.png'></image>
+      </view>
+      <view class='pice'>￥{{recommend.pice}}.00
+          <view class='number'>库存:{{recommend.particulars.number}}</view>
+      </view>
+  </view>
+
+<view class='describe'>
+    <view class='color'>
+        <text>颜色 :</text>
+        <view wx:for="{{recommend.particulars.color}}"
+         bindtap="chooseFlower" 
+         wx:key="{{index}}"
+        style="{{index == chickid?' border:1rpx solid #e8580c; color: #e8580c':'baciground:url();border:1rpx solid gainsboro;color:gray'}}"
+         >{{item}}</view>
+    </view>
+
+    <view class='size'>
+        <text>规格 :</text>
+        <view wx:for="{{recommend.particulars.size}}" 
+         bindtap="chooseSize" 
+         wx:key="{{index}}"
+        style="{{index == chickidsize?' border:1rpx solid #e8580c; color: #e8580c':'baciground:url();border:1rpx solid gainsboro;color:gray'}}"
+         >{{item}}</view>
+    </view>
+    
+    <view class="shopNumber">
+        <text>数量 :</text>
+        <view class='nums'>
+             <view class='calculate' bindtap='minus'>-</view>  
+             <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                <view class="num picker">{{num}}</view>  
+             </picker>
+             <view class='calculate'bindtap='add'>+</view>   
+         </view>
+    </view>
+</view>
+
+<view class='end'>就这么多啦........</view>
+
+
+  <view class='box'>
+    <view class='box1'>
+        <image src='../../image/kefu.png'></image>
+        <view>客服</view>
+    </view>
+    <view class='box2' bindtap='goShopeCar' open-type="switchTab">
+         <image src='../../image/shopcar.png'></image>
+         <view wx:if="{{carTotal>0}}" class="carTotal">{{carTotal}}</view>
+        <view >购物车</view>
+    </view>
+    <view class='box3' bindtap='addCar'>加入购物车
+    </view>
+    <view class='box4'>立刻购买</view>
+  </view>
+  </view>

@@ -1,0 +1,8 @@
+tabBar{
+  width: 1rpx;
+  height: 2rpx
+}
+page{
+  color: #0b0b0b;
+  font-family:"方正兰亭黑_GBK";
+}

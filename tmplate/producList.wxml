@@ -1,0 +1,10 @@
+  
+  <template name='produclist'>
+  <view class='div' >
+      <view class='box' wx:for="{{recommend}}"  wx:key="{{index}}"  bindtap='clicks' data-id='{{item._id}}' > 
+      <image src="{{rootPath+item.imgPath}}"></image>
+      <view class='pice'>￥{{item.pice}}.00</view>
+      <text class='describe'>{{item.describe}}</text>
+      </view>
+  </view>
+  </template>

@@ -1,0 +1,14 @@
+
+<import src='./../../tmplate/producList.wxml'/>
+<view  hidden="{{loadingHidden}}">
+
+<template is="produclist" data='{{recommend : recommend ,rootPath}}' />
+ 
+</view>
+<!--============================================================================= -->
+<loading hidden="{{!loadingHidden}}">
+加载中....
+</loading>
+
+
+<view class='xiaoer' hidden="{{hiddenName}}" >店小二正在补货中......   </view>

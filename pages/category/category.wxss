@@ -1,0 +1,47 @@
+.left{
+  width: 200rpx;
+  height: 100%;
+  overflow: auto;
+  background:#f3f3f3;
+  margin-top: 0rpx;
+  float: left
+}
+
+.left view{
+  height: 120rpx;
+  line-height: 120rpx;
+  font-size: 30rpx;
+  text-align: center;
+  
+}
+.right{
+  width:460rpx;
+  float: right;
+  overflow-x: hidden;
+  overflow-y: auto;
+   height: 100%;
+   padding: 0rpx 45rpx;
+}
+.right image{
+  width: 200rpx;
+  height: 220rpx;
+}
+.item{
+  height: 290rpx;
+  float: left;
+  margin-top:60rpx 
+}
+.item:nth-child(even){
+  margin-left: 50rpx
+}
+.title{
+  font-size: 28rpx;
+  width: 200rpx;
+  height: 70rpx;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break:break-all;
+  display: -webkit-box;
+ text-overflow: ellipsis;
+ -webkit-line-clamp:2;
+}

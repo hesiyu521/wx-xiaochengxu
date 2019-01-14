@@ -1,0 +1,44 @@
+
+<import src='./../../tmplate/producList.wxml'/>
+<view  hidden="{{loadingHidden}}">
+  <view class='seek'>
+    <image src='../../image/sousuo.png'></image>
+    <text>搜索: 分类 品牌 商品 活动</text>
+  </view>
+  <!--============================================================================= -->
+  <swiper
+    indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}"
+    interval="{{interval}}"
+    duration="{{duration}}"
+    circular="true"
+    class='banner'
+  >
+    <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <!--============================================================================= -->
+  <image class='pinpai' src='http://hesiyu.gz01.bdysite.com/img/pinpai.png'></image>
+  <!--============================================================================= -->
+  <view class='theme'>
+    <view wx:for="{{theme}}"  wx:key="{{index}}" class='theme-item' bindtap='Tolist'  data-id='{{item._id}}'>
+      <image src="{{rootPath+item.imgPath}}"></image>
+      <view>{{item.title}}</view>
+    </view>
+  </view>
+  <!--============================================================================= -->
+  <view class='hr'></view>
+  <view class='jingxuan'>
+    <text>精选推荐</text>  
+  </view>
+  <!--============================================================================= -->
+<template is="produclist" data='{{recommend : recommend ,rootPath}}' />
+ 
+</view>
+<!--============================================================================= -->
+<loading hidden="{{!loadingHidden}}">
+加载中....
+</loading>
