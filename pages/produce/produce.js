@@ -175,18 +175,17 @@ Page({
 
 
       this.setData({
-        history: historys
+        history: historys,
+        carTotal:historys.length
       })
     wx.setStorageSync('history', historys)
-   
- 
-
   },
 
   getlist(e) {
   const value = wx.getStorageSync('history')
     console.log(value)
     let car=0
+    
     this.setData({
       carTotal: value.length,
       history: value

@@ -9,20 +9,15 @@ Page({
     rootPath: Config.rootPath,
     checked:[],
     chickid:0,
-    carTotal: 0,
-    indexs: 2
+    carTotal: Config.carTotal,
+    indexs: Config.indexs
 
   },
 
 
   onLoad() {
     this.getlist()
-    wx.setTabBarBadge({
-      index: this.data.indexs,
-      text: JSON.stringify(this.data.carTotal)
-    })
        home.getHomeData((data) => {
-         console.log(data.themes)
       this.setData({
         loadingHidden: false,
         theme: data.themes,
@@ -50,25 +45,22 @@ Page({
     home.refresh(() => {
       wx.stopPullDownRefresh()
     })
-    wx.setTabBarBadge({
-      index: this.data.indexs,
-      text: JSON.stringify(this.data.carTotal)
-    })
+
   },
   getlist(e) {
     const value = wx.getStorageSync('history')
-    if (value) {
-      this.setData({
-        carTotal: value.length,
-
-      })
-    } else {
-      this.setData({
-        carTotal: car,
-        indexs: 5
-      })
+    console.log(value)
+    if (value.length > 0) {
+      Config.carTotal = value.length
+      Config.indexs = 2
     }
-
+    if (!value.length) {
+      Config.indexs = 5
+    }
+    wx.setTabBarBadge({
+      index: Config.indexs,
+      text: JSON.stringify(Config.carTotal)
+    })
     
   },
 

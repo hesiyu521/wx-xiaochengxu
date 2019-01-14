@@ -2,6 +2,7 @@ App({
   
   onLaunch(options) {
     // Do something initial when launch.
+    
     console.log("app初始化完成")
   },
   onShow(options) {

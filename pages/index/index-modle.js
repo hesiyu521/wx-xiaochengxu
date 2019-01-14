@@ -4,7 +4,7 @@ class Home extends Base {
     super()
   }
   getIndexData(callBack) {
-    let homeData = wx.getStorageSync("index")
+    let homeData = wx.getStorageSync("home")
     if (!homeData) {
       this.axios('get', '/getHomeData')
         .then((res) => {
@@ -15,7 +15,7 @@ class Home extends Base {
           console.log(err)
         })
     } else {
-      let home = wx.getStorageSync('index')
+      let home = wx.getStorageSync('home')
       callBack(home)
     }
 
@@ -24,7 +24,7 @@ class Home extends Base {
   refresh(cb) {
     this.axios('get', '/getHomeData')
       .then((res) => {
-        wx.setStorageSync('index', res.data)
+        wx.setStorageSync('home', res.data)
         cb()
       })
       .catch((err) => {

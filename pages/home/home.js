@@ -19,18 +19,14 @@ Page({
     autoplay: true,
     interval: 5000,
     duration: 1000,
-    carTotal: 0,
-    indexs: 2
+    carTotal: Config.carTotal,
+     
 
   },
   
 
   onLoad() {
     this.getlist()
-   wx.setTabBarBadge({ 
-       index: this.data.indexs,
-      text: JSON.stringify(this.data.carTotal)
-    })
     home.getHomeData((data)=>{
       this.setData({
           loadingHidden: false ,
@@ -38,6 +34,7 @@ Page({
           recommend:data.recommends
         })
     })
+    
   },
   Tolist(e) {
     let id = home.getDateSete(e, "id")
@@ -63,31 +60,29 @@ Page({
     home.refresh(()=>{
       wx.stopPullDownRefresh()
     })
-    wx.setTabBarBadge({
-      index: this.data.indexs,
-      text: JSON.stringify(this.data.carTotal)
-    })
+    this.getlist()
   },
   getlist(e) {
     const value = wx.getStorageSync('history')
-    let car =[] 
-    console.log(value)
-    if (value.length>0) {
-      this.setData({
-        carTotal: value.length,
-      })
-    } else {
-      this.setData({
-        carTotal: car,
-        indexs: 5
-      })
+    if (value.length > 0) {
+      Config.carTotal = value.length
+      Config.indexs = 2
     }
+    if (!value.length) {
+      Config.indexs = 5
+    }
+    wx.setTabBarBadge({
+      index: Config.indexs,
+      text: JSON.stringify(Config.carTotal)
+    })
   } ,
+
   /**
    * 生命周期函数--监听页面显示
    */
   onShow () {
-    this.onLoad() 
+    this.onLoad()
+    this.getlist()
   },
 
 })

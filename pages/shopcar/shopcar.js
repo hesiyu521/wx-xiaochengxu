@@ -19,7 +19,6 @@ Page({
     rootPath: Config.rootPath,
   },
   onLoad(options) {
-
     const value = wx.getStorageSync('history')
     home.getHomeData((data) => {
       this.setData({
@@ -93,6 +92,7 @@ Page({
   getlist(e) {
     const historyvalue = wx.getStorageSync('historynum')
     const value = wx.getStorageSync('history')
+
     if (historyvalue){
       this.data.thisnum = historyvalue
       let car = 0
@@ -105,12 +105,8 @@ Page({
         carTotal: car
       })
     }else{
-      let car = 0
-      for (var j = value.length - 1; j >= 0; j--) {
-        car += value[j].number
-      }
+
       this.setData({
-        carTotal: car,
         history: value
       })
     }
@@ -212,9 +208,19 @@ clickCheckall(e){
       content: '您确定要删除此条宝贝么┏༼ •́ ╭╮ •̀ ༽┓',
       success: (res)=> {
         if (res.confirm) {
-        console.log(this.data)
           value.splice(numsa,1)
-          wx.setStorageSync('history', value)
+          wx.setStorageSync('history', value)    
+          if (value.length > 0) {
+            Config.carTotal = value.length
+            Config.indexs =2
+          }
+          if (!value.length) {
+            Config.indexs=5
+          }
+          wx.setTabBarBadge({
+            index: Config.indexs,
+            text: JSON.stringify(Config.carTotal)
+          })
           this.onLoad()
         } else {
           console.log('用户点击取消')
@@ -222,7 +228,13 @@ clickCheckall(e){
       }
     })
    
-  }
+  },
+  onTabItemTap(item) {
+    console.log(item.index)
+    wx.hideTabBarRedDot({
+      index: item.index
+    })
+  },
 
 })
 
