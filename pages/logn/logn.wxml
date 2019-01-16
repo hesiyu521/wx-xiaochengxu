@@ -1,2 +1,5 @@
-<!--pages/logn/logn.wxml-->
-<text>pages/logn/logn.wxml</text>
+<view class='noaccredit'>
+  <image class='bg' src='../../image/logn.jpg'></image>
+  <button class='btn' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">授 权 登 陆</button>
+</view>
+

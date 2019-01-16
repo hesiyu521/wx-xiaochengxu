@@ -44,6 +44,7 @@ Page({
   onPullDownRefresh() {
     home.refresh(() => {
       wx.stopPullDownRefresh()
+      this.onLoad()
     })
 
   },

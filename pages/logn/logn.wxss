@@ -1,1 +1,22 @@
-/* pages/logn/logn.wxss */
+.noaccredit{
+  position: relative;
+    width: 750rpx;
+}
+.bg{
+  display: block;
+  width: 750rpx;
+  height: 100vh;
+  overflow: hidden
+}
+.btn{
+  position:absolute;
+  bottom: 150rpx;
+  left: 150rpx;
+  width: 440rpx;
+  height: 70rpx;
+  text-align: center;
+  line-height: 70rpx;
+  border-radius:50rpx ;
+  font-size: 30rpx;
+  color: #6f1400
+}

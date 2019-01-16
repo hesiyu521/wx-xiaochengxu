@@ -1,0 +1,39 @@
+@import "./../order/order.wxss";
+.time{
+  font-size: 20rpx;
+  color: #a8a8a8;
+  margin-top: 5rpx
+}
+.titlecart{
+  width: 380rpx
+}
+.nums{
+  width: 100rpx;
+  color: #d6473c
+}
+
+.bgd{
+  width: 750rpx;
+  height: 100vh;
+  display: block
+
+}
+.titles{
+   display: block;
+   height: 15%;
+   width: 220rpx;
+    font-size: 24rpx;
+   -webkit-box-orient: vertical;
+   overflow: hidden;
+   word-break:break-all;
+   display: -webkit-box;
+ text-overflow: ellipsis;
+ -webkit-line-clamp:1;
+ margin-bottom:10rpx; 
+ margin-top:10rpx;
+}
+.bottom{
+ font-size: 20rpx;
+  color: #a8a8a8;
+  margin-top: 10rpx
+}

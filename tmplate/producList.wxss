@@ -4,14 +4,14 @@
   margin: 20rpx auto;
   display: flex;
 flex-wrap:wrap;
-justify-content: space-around 
+justify-content: space-between 
 }
 .box{
   width: 45%;
   height: 480rpx;
   font-size: 29rpx;
   border-bottom:1rpx #eeeeee solid; 
-  padding: 17rpx
+  padding: 30rpx 17rpx 50rpx 17rpx;
 }
 .box image{
   width: 325rpx;

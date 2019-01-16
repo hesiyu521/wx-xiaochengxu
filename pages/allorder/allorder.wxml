@@ -1,0 +1,22 @@
+    <view class='branches' wx:if='{{loadingHidden}}'>
+                  <view  class='we' wx:for='{{orderall}}' bindtap='clicks' data-index='{{index}}' wx:key=''>
+                   <view class='ordernumber'>订单编号: {{item.numbering}} </view>
+                    <view class='commodity'>
+                  <view bindtap='clicks' wx:key='' data-index='{{index}}'>
+                    <image src='{{rootPath}}{{item.recommend.imgPath}}'></image>
+                  </view>
+                  <view class='titlecart'>
+                    <text class='titles'>{{item.recommend.describe}}</text>
+                    <view class='sizing'>规格 : 颜色({{item.color}})/尺码({{item.size}})/ 数量({{item.number}})</view>
+                    <view class='pice'>￥{{item.recommend.pice}}.00</view>
+                    <view class='time'>交易时间: {{item.time}}</view>
+                    <view class='bottom'>收货地址: {{item.address.provinceName +
+                 item.address.cityName + item.address.countyName + item.address.detailInfo}}</view>
+                  </view>
+                  <view class="shopNumber">
+                    <view class='nums'>{{item.state}}</view>
+                </view>
+                </view>
+                </view>
+    </view> 
+    <image class='bgd' mode='aspectFit' wx:else src='../../image/timgs.jpg'> </image>

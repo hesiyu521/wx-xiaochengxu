@@ -1,7 +1,7 @@
 
 <import src='./../../tmplate/producList.wxml'/>
 <view  hidden="{{loadingHidden}}">
-  <view class='seek'>
+  <view class='seek'  bindtap='toSearch'>
     <image src='../../image/sousuo.png'></image>
     <text>搜索: 分类 品牌 商品 活动</text>
   </view>

@@ -1,0 +1,51 @@
+<view>
+<image class='first' src='../../image/timg.jpg'></image>
+    <view class='outer_address'> 
+        <view class='address' wx:if="{{loadingaddress}}" bindtap='Toaddress'>
+            <image src='./../../image/dizhi.png'></image>
+            <view class='address_right'>
+                <view class='top'>
+                    <text>收货人: {{chooseAddress.userName}}</text>
+                    <text>{{chooseAddress.telNumber}}</text>
+                </view>
+                <view class='bottom'>收货地址: {{chooseAddress.provinceName +
+                 chooseAddress.cityName + chooseAddress.countyName + chooseAddress.detailInfo}}</view>
+            </view>
+        </view>
+
+        <view class='Noaddress' wx:else  bindtap='Toaddress'>
+            <text class='icon'>+ 添加地址</text>
+        </view>
+    </view>
+
+     <view class='branches'>
+
+                  <view  class='we' wx:for='{{newbill}}' wx:key=''>
+                   <view class='ordernumber'>订单编号: {{item.numbering}} </view>
+                    <view class='commodity'>
+                  <view bindtap='clicks' wx:key='' data-index='{{index}}'>
+                    <image src='{{rootPath}}{{item.recommend.imgPath}}'></image>
+                  </view>
+                  <view class='titlecart'>
+                    <text class='titles'>{{item.recommend.describe}}</text>
+                    <view class='sizing'>规格 : 颜色({{item.color}})/尺码({{item.size}})</view>
+                    <view class='pice'>￥{{item.recommend.pice}}.00</view>
+                  </view>
+                  <view class="shopNumber">
+                    <view class='nums'>x {{item.number}}</view>
+                </view>
+                </view>
+                </view>
+    </view> 
+
+      <view class='closeAccount'>
+          <view class='foot'>
+              <view style='display:flex'>
+                      <view class='allcheeck'>合计金额</view>
+                      <view class='money'>￥{{allmoney}}.00</view>
+                  </view>
+              <view class='close' bindtap='toPay' >支付</view>
+          </view>
+      </view>
+
+</view>

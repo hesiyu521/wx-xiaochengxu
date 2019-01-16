@@ -1,14 +1,17 @@
 {
   "pages": [
-       
     "pages/home/home",
-"pages/category/category",
-   "pages/shopcar/shopcar",
+    "pages/category/category",
+    "pages/shopcar/shopcar",
     "pages/my/my",
     "pages/index/index",
     "pages/produce/produce",
-    "pages/logn/logn"
-    
+    "pages/logn/logn",
+    "pages/order/order",
+    "pages/address/address",
+    "pages/search/search",
+    "pages/allorder/allorder",
+    "pages/searchResult/searchResult"
   ],
   "window": {
     "navigationStyle": "default",

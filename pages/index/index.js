@@ -15,24 +15,22 @@ Page({
     rootPath: Config.rootPath,
   },
   onLoad: function (options) {
+    
     let recommendss
     let arr=[]
     home.getIndexData((data) => {
       let datalist=data.themes
-      console.log(datalist)
       for (var i = 0; i < datalist.length;i++){
         if (datalist[i]._id == Number(options.id)){
           arr.push(datalist[i])
           break
         }
       }
-      console.log(arr)
       if (arr[0].product.length%2!==0 ){
         recommendss = arr[0].product.slice(0, arr[0].product.length -1)
       }else{
         recommendss = arr[0].product
       }
-      console.log(recommendss)
       if (recommendss.length == 0){
         this.setData({
           loadingHidden: false,

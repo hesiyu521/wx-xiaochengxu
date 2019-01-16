@@ -19,6 +19,9 @@ Page({
     rootPath: Config.rootPath,
   },
   onLoad(options) {
+    wx.hideTabBarRedDot({
+      index: 2
+    })
     const value = wx.getStorageSync('history')
     home.getHomeData((data) => {
       this.setData({
@@ -28,7 +31,7 @@ Page({
       })
     })
     this.getlist()
-    if(this.data.history !== false){
+    if (value.length>0){
       this.setData({
         hiddens: false,
       })
@@ -41,6 +44,11 @@ Page({
     this.setData({
       allmoney: checknum
     })
+    if (value.length<1) {
+        this.setData({
+          checked: false
+        })
+    }
   },
 
   onShareAppMessage: function () {
@@ -49,15 +57,22 @@ Page({
   onPullDownRefresh() {
     home.refresh(() => {
       wx.stopPullDownRefresh()
+      this.onLoad()
     })
     this.onLoad() 
   },
 
   bindPickerChange(e) {
+    
+    this.data.thisnum[e.currentTarget.dataset.index] = this.data.array[e.detail.value]
+  
     this.setData({
       index: e.detail.value,
-      num: Number(e.detail.value) + 1
+      thisnum: this.data.thisnum
     })
+    const value = wx.getStorageSync('history')
+    this.getmoney(e, value)
+    wx.setStorageSync('historynum', this.data.thisnum)
   },
   add(e) {
     let n = e.currentTarget.dataset.index
@@ -137,6 +152,7 @@ clickCheckall(e){
     }
 
   }
+
   this.setData({
     checkeds: itemSelected
   })
@@ -205,35 +221,46 @@ clickCheckall(e){
     const value = wx.getStorageSync('history')
     wx.showModal({
       title: '确认删除?',
-      content: '您确定要删除此条宝贝么┏༼ •́ ╭╮ •̀ ༽┓',
+      content: '您确定要删除此条宝贝么?',
       success: (res)=> {
         if (res.confirm) {
           value.splice(numsa,1)
           wx.setStorageSync('history', value)    
-          if (value.length > 0) {
-            Config.carTotal = value.length
-            Config.indexs =2
-          }
-          if (!value.length) {
-            Config.indexs=5
-          }
-          wx.setTabBarBadge({
-            index: Config.indexs,
-            text: JSON.stringify(Config.carTotal)
-          })
+         
           this.onLoad()
+
         } else {
           console.log('用户点击取消')
         }
       }
     })
+  
    
   },
   onTabItemTap(item) {
-    console.log(item.index)
     wx.hideTabBarRedDot({
       index: item.index
     })
+  },
+  toOrder(e) {
+    wx.setStorageSync('historynum', this.data.thisnum)
+    wx.setStorageSync('checknum', this.data.checkeds)
+    wx.setStorageSync('allmoney', this.data.allmoney)
+    const value = wx.getStorageSync('history')
+    if(value.length<1 || !value){
+      wx.showLoading({
+        title: '还没有选宝贝',
+      })
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 1000)
+    }else{
+    let item =1
+      wx.redirectTo
+      ({
+        url: `../../pages/order/order?item=${item}`
+      })
+    }
   },
 
 })

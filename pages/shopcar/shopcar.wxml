@@ -4,7 +4,7 @@
   <image class='bgcart' src='../../image/666.png'></image>
 </view>
 
-<view wx:if="{{!hiddens}}" class='we'>
+<view wx:else class='we'>
  
     <view class='commodity' wx:for="{{history}}" wx:key="">
     <view class="group" bindtap='remover' data-index='{{index}}'>
@@ -27,7 +27,7 @@
       <view class="shopNumber">
         <view class='nums'>
              <view class='calculate' bindtap='minus'  data-index='{{index}}'>-</view>  
-             <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+             <picker bindchange="bindPickerChange"  data-index='{{index}}'   value="{{index}}" range="{{array}}">
                 <view class="item.num picker">{{thisnum[index]}}</view>  
              </picker>
              <view class='calculate'bindtap='add' data-index='{{index}}'>+</view>   
@@ -54,5 +54,5 @@
           <view class='allcheeck'>全选</view>
           <view class='money'>￥{{allmoney}}.00</view>
     </view>
-    <view class='close'>立即结算</view>
+    <view class='close' bindtap='toOrder' >立即结算</view>
 </view>

@@ -1,1 +1,86 @@
 
+<view wx:if='{{loadingHidden}}'>
+    <view class='head'  > 
+        <view >
+            <image class='userimg'src='{{uesrinfo.avatarUrl}}'></image>
+            <view class='userName' > 
+                <view>{{uesrinfo.nickName}}</view>
+            </view>
+        </view>
+    </view>
+    <view class='allorder' bindtap='goAllorder'>
+        <view>全部订单</view>
+        <view class='oderight'>查看全部订单<text class='icon'>></text></view>
+    </view>
+
+    <view class='order'>
+      <view class='one' wx:key='' bindtap='selecteds' data-index="0" >
+          <view class='imgs'>
+              <image  src='{{selected[0]?"../../image/03_check.png":"../../image/03.png"}}'   ></image>
+              
+          </view>
+          <view >
+              <view >{{order[0].title}}</view><text>({{payment.length}})</text>
+          </view>
+      </view>
+        <view class='one' wx:key=''bindtap='selecteds' data-index="1" >
+          <view class='imgs'>
+              <image   src='{{selected[1]?"../../image/05-check.png":"../../image/05.png"}}'></image>
+          </view>
+          <view >
+              <view >{{order[1].title}}</view><text>({{accountPaid.length}})</text>
+          </view>
+      </view>
+        <view  class='one' wx:key='' bindtap='selecteds' data-index="2" >
+          <view class='imgs'>
+              <image  src='{{selected[2]?"../../image/07-check.png":"../../image/07.png"}}'></image>
+          </view>
+          <view >
+              <view >{{order[2].title}}</view><text>(0)</text>
+          </view>
+      </view>
+        <view class='one' wx:key='' bindtap='selecteds' data-index="3" >
+          <view class='imgs'>
+              <image   src='{{selected[3]?"../../image/09-check.png":"../../image/09.png"}}'></image>
+          </view>
+          <view >
+              <view >{{order[3].title}}</view><text>(0)</text>
+          </view>
+      </view>
+    </view>
+
+    <view class='Strombestellung'>
+             <view class='branches'   wx:if='{{imgHadden}}'>
+                  <view  class='we' wx:for='{{strombestellung}}'  wx:key=''>
+                   <view class='ordernumber'>订单编号: {{item.numbering}} </view>
+                    <view class='commodity'>
+                  <view bindtap='clicks' wx:key='' data-index='{{index}}'  bindtap='clicks' data-index='{{index}}'>
+                    <image src='{{rootPath}}{{item.recommend.imgPath}}'></image>
+                  </view>
+                  <view class='titlecart'  bindtap='clicks' data-index='{{index}}' >
+                    <text class='titles'>{{item.recommend.describe}}</text>
+                    <view class='sizing'>规格 : 颜色({{item.color}})/尺码({{item.size}})</view>
+                    <view class='pice'>￥{{item.recommend.pice}}.00</view>
+                    <view class='time'>交易时间: {{item.time}}</view>
+                  </view>
+                  <view class="shopNumber">
+                    <view class='nums' wx:if='{{!topay}}'>x {{item.number}}</view>
+                    <button class='pay' bindtap='toPay'  data-index="{{index}}"  wx:else>去支付</button>
+                </view>
+                </view>
+                </view>
+           </view> 
+             <image class='bgd' mode='aspectFit' wx:else  src='../../image/timtt.png'> </image>
+    </view>
+
+    <view class='address' bindtap='goAddress'>
+    <text>地址管理</text><text class='oderight'>></text>
+    </view>
+</view>
+<view wx:else class='noaccredit'>
+  <image class='bg' src='../../image/logn.jpg'></image>
+  <button class='btn' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">授 权 登 陆</button>
+</view>
+
+
+

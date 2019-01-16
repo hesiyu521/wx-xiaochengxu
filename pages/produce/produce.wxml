@@ -17,7 +17,9 @@
   </swiper>
   <view class='describe'>
       <view class='title'>{{recommend.describe}}
+         <button open-type='share' class='fenxiang' >
          <image class='fenxiang' src='./../../image/fenxiang.png'></image>
+         </button>
       </view>
       <view class='pice'>￥{{recommend.pice}}.00
           <view class='number'>库存:{{recommend.particulars.number}}</view>
@@ -70,6 +72,6 @@
     </view>
     <view class='box3' bindtap='addCar'>加入购物车
     </view>
-    <view class='box4'>立刻购买</view>
+    <view class='box4' bindtap='toOrder'>立刻购买</view>
   </view>
   </view>

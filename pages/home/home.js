@@ -50,6 +50,12 @@ Page({
         url: `../../pages/produce/produce?id=${id}`
       })
   },
+  toSearch(){
+    wx.navigateTo
+      ({
+        url: "../../pages/search/search"
+      })
+  },
   /**
  * 用户点击右上角分享
  */
@@ -59,8 +65,10 @@ Page({
   onPullDownRefresh(){
     home.refresh(()=>{
       wx.stopPullDownRefresh()
+      this.onLoad()
     })
     this.getlist()
+    
   },
   getlist(e) {
     const value = wx.getStorageSync('history')

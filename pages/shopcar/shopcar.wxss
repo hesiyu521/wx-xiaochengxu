@@ -97,7 +97,7 @@ width: 95%;
   position: absolute;
   right: 10rpx;
   top: 5rpx;
-  font-size: 24rpx;
+  font-size: 30rpx;
   color: #c6c6c6
 }
 .item_container {

@@ -1,0 +1,21 @@
+<view class='search-view'>
+  <input bindconfirm='confirm' class='input' confirm-type="search" maxlength="30" value='{{keyword}}' bindinput='input' placeholder='搜索：分类 品牌 商品 活动'></input>
+  <image mode='aspectFit' src='../../image/sousuo.png' class='search' bindtap="search"/>
+</view>
+<!-- 搜索历史 -->
+<!-- <view wx:if='{{historyArr.length}}' class='search-history'> -->
+<view class='search-history'>
+  <view class='title-box'>
+    <text class='history-title'>搜索历史</text>
+    <image bindtap='clearHistory' src='../../image/lajitong.png'/>
+  </view>
+  <view class='history-content'>
+    <block wx:for='{{historyArr}}' wx:key='{{index}}'>
+      <text bindtap='tapHistory' data-keyword='{{item}}'>{{item}}</text>
+    </block>
+  </view>
+<!-- 清除历史 -->
+<!-- <button class='clearBtn' bindtap='clearHistory'>清除历史</button> -->
+</view>
+
+

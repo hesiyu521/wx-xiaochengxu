@@ -21,13 +21,14 @@ Page({
     chickidsize:0,
     orderInfo:{},
     history:[],
-    upload:{}
+    upload:{},
+
   },
   onLoad(options) {
     let ress = []
     let  arr =[]
     home.getHomeData((data) => {
-      console.log(data)
+
       let recommendsId
       if (Number(options.id)>100){
         for (var i in data.themes) {
@@ -63,6 +64,7 @@ Page({
   onPullDownRefresh() {
     home.refresh(() => {
       wx.stopPullDownRefresh()
+      this.onLoad()
     })
   },
   add(event){
@@ -136,18 +138,22 @@ Page({
         recommend: recommends
          }
     })
+    console.log(this.data.orderInfo)
     this.save()
   }, 
   goShopeCar(e) {
-    let id = home.getDateSete(e, "id")
     wx.switchTab
       ({
         url: "../../pages/shopcar/shopcar"
       })
   },
-
-
-
+  onShareAppMessage: function () {
+    return {
+      title: recommend.describe,//分享内容
+      path: '/pages/produce/produce',//分享地址
+      imageUrl: recommend.imgPath//分享图片
+    }
+  },
   save(e) {
     console.log('开始保存')
     const value = wx.getStorageSync('history')
@@ -181,6 +187,7 @@ Page({
     wx.setStorageSync('history', historys)
   },
 
+
   getlist(e) {
   const value = wx.getStorageSync('history')
     console.log(value)
@@ -209,7 +216,38 @@ Page({
         }
       }
     }
-  } 
+  } ,
+  toOrder(e) {
+    let all = this.data.num + this.data.carTotal
+    console.log(this.data)
+    let chickidsizes = Number(this.data.chickidsize)
+    let chickids = Number(this.data.chickid)
+    let colors = this.data.recommend.particulars.color[chickids]
+    let sizes = this.data.recommend.particulars.size[chickidsizes]
+    let numbers = this.data.num
+    let recommends = this.data.recommend
+
+    this.setData({
+      carTotal: all,
+      orderInfo: {
+        size: sizes,
+        color: colors,
+        number: numbers,
+        colornum: chickids,
+        sizenum: chickidsizes,
+        allnums: all,
+        recommend: recommends
+      }
+    })
+    console.log(this.data.orderInfo)
+    let item = JSON.stringify(this.data.orderInfo)
+    wx.reLaunch
+      ({
+        url: `../../pages/order/order?item=${item}`
+      })
+  },
+
+
 
 })
 
